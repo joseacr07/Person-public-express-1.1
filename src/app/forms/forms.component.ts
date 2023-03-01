@@ -1,5 +1,6 @@
-import { Component, Output , EventEmitter } from '@angular/core';
+import { Component } from '@angular/core';
 import { LogginService } from '../logginService.service';
+import { PersonService } from '../person.service';
 import { Person } from '../persons.model';
 
 @Component({
@@ -9,17 +10,17 @@ import { Person } from '../persons.model';
 })
 export class FormsComponent {
 
-  @Output() createdPerson = new EventEmitter<Person>()
 
   inputName:string = '';
   inputSurname:string = '';
 
-  constructor(private logginService:LogginService){}
+  constructor(private logginService:LogginService,
+              private personService:PersonService){}
 
   addPerson(){
     let person1 = new Person(this.inputName, this.inputSurname);
     this.logginService.sendConsoleMessage(`Enviamos a: ${person1.name} ${person1.surname}`)
-    this.createdPerson.emit(person1)
+    this.personService.addPerson(person1)
   }
 
 }

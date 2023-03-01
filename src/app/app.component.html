@@ -2,9 +2,9 @@
 
  <h3> {{title}} </h3>
 
-<app-forms
-  (createdPerson)="addPerson($event)">
+<app-forms>
 </app-forms>
+
 <app-persons
 *ngFor="let personsComponent of persons; let i = index"
 [person]="personsComponent"

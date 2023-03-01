@@ -1,7 +1,9 @@
 <form>
     <label for="name">Name</label>
     <input type="text" id="name" name="name" placeholder="Maria ✅" [(ngModel)]="inputName">
+    <br> <br>
     <label for="surname">Surname</label>
     <input type="text" id="surname" name="surname" placeholder="Millan 🌐" [(ngModel)]="inputSurname">
 </form>
+    <br>
     <button type="submit" (click)="addPerson()">Add Person</button>

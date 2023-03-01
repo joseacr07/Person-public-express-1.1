@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { LogginService } from './logginService.service';
+import { PersonService } from './person.service';
 import { Person } from './persons.model';
 
 @Component({
@@ -7,21 +8,18 @@ import { Person } from './persons.model';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'person-list-express-1.1';
 
-  persons:Person [] = [
-    new Person ('Nubis','Campos'),
-    new Person ('Brenda', 'Rodriguez')
-  ];
+  persons:Person [] = [];
   
-  constructor(private logginService:LogginService){}
-  
-  
-
-  addPerson(person:Person){
-  this.logginService.sendConsoleMessage(`Enviamos otra vez? A : ${person.name} ${person.surname}`)
-  this.persons.push(person)
-  }
+  constructor(private logginService:LogginService,
+              private personService:PersonService){};
+              
+              
+              ngOnInit(): void {
+               this.persons = this.personService.persons;
+              };
+              
 
 }
